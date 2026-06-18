@@ -1,0 +1,13 @@
+{
+  "task": "v3_w3lib_complex_7",
+  "cases": [
+    {
+      "entry": "from w3lib.http import basic_auth_header\nfrom w3lib.html import get_meta_refresh\n\nhtml = (\n    '<html><head>'\n    '<script><meta http-equiv=\"refresh\" content=\"0;url=evil.html\"></script>'\n    '<meta http-equiv=\"refresh\" content=\"3;url=next.html\">'\n    '</head></html>'\n)\nrefresh = get_meta_refresh(html, \"http://example.com/path/index.html\")\nheaders = [basic_auth_header(\"Aladdin\", \"open sesame\"), basic_auth_header(\"user\", \"pass\")]\nstate = [(refresh[0], refresh[1]), [header.decode() for header in headers]]\n\nprint(state)\nprint([item.split()[1][:4] for item in state[1]])\nprint(state[0][1].replace(\"index.html\", \"x\"))\n",
+      "expected_output": [
+        "[(3.0, 'http://example.com/path/next.html'), ['Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==', 'Basic dXNlcjpwYXNz']]",
+        "['QWxh', 'dXNl']",
+        "http://example.com/path/next.html"
+      ]
+    }
+  ]
+}

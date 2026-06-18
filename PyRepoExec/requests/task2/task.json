@@ -1,0 +1,21 @@
+{
+  "task": "002_requests_task2",
+  "cases": [
+    {
+      "entry": "from requests.auth import HTTPBasicAuth\n\nauth1 = HTTPBasicAuth(\"user\", \"pass\")\nauth2 = HTTPBasicAuth(\"user\", \"pass\")\nauth3 = HTTPBasicAuth(\"user\", \"word\")\nprint(auth1.username)\nprint(auth1.password)\nprint(auth1 == auth2)\nprint(auth1 == auth3)\n",
+      "expected_output": [
+        "user",
+        "pass",
+        "True",
+        "False"
+      ]
+    },
+    {
+      "entry": "from requests.auth import HTTPBasicAuth\n\nleft = HTTPBasicAuth(\"alice\", \"pw\")\nright = HTTPBasicAuth(\"alice\", \"pw\")\nother = HTTPBasicAuth(\"alice\", \"secret\")\nprint(left == right)\nprint(left != other)\n",
+      "expected_output": [
+        "True",
+        "True"
+      ]
+    }
+  ]
+}

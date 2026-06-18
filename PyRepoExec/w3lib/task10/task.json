@@ -1,0 +1,11 @@
+{
+  "task": "v4_w3lib_encoding_bom_meta_data_uri_params",
+  "cases": [
+    {
+      "entry": "from w3lib.html import replace_escape_chars\n\nprint(replace_escape_chars(\"left\\rright\", replace_by=\"/\"))\n",
+      "expected_output": [
+        "left/right"
+      ]
+    }
+  ]
+}

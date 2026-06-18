@@ -1,0 +1,11 @@
+{
+  "task": "v3_slugify_complex_4",
+  "cases": [
+    {
+      "entry": "from slugify.slugify import smart_truncate\n\nprint(smart_truncate(\"alphabet\", max_length=5))\n",
+      "expected_output": [
+        "alpha"
+      ]
+    }
+  ]
+}

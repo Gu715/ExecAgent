@@ -1,0 +1,14 @@
+{
+  "task": "017_django_task17",
+  "cases": [
+    {
+      "entry": "methods = BaseManager._get_queryset_methods(QuerySet)\n\nprint(sorted(methods))\nprint('values_list' in methods, 'dates' in methods, '_clone' in methods, 'delete' in methods, 'as_manager' in methods)\nprint(methods['values_list'].__name__)\nprint(methods['values_list'].__wrapped__.__name__)\n",
+      "expected_output": [
+        "['dates', 'values_list']",
+        "True True False False False",
+        "values_list",
+        "values_list"
+      ]
+    }
+  ]
+}

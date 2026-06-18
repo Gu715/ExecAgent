@@ -1,0 +1,11 @@
+{
+  "task": "004_xarray_task4",
+  "cases": [
+    {
+      "entry": "from xarray.coding.cftime_offsets import QuarterEnd, QuarterOffset\n\noffset = QuarterEnd(n=1, month=3)\nresult = QuarterOffset.__mul__(offset, 2.5)\nprint(result)\n",
+      "expected_output": [
+        "NotImplemented"
+      ]
+    }
+  ]
+}

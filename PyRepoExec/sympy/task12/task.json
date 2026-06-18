@@ -1,0 +1,11 @@
+{
+  "task": "012_sympy_task12",
+  "cases": [
+    {
+      "entry": "from sympy import symbols\nfrom sympy.simplify.simplify import signsimp\n\nx = symbols(\"x\")\nprint(signsimp(-x + x))\n",
+      "expected_output": [
+        "0"
+      ]
+    }
+  ]
+}

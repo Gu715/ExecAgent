@@ -1,0 +1,11 @@
+{
+  "task": "005_sympy_task5",
+  "cases": [
+    {
+      "entry": "from sympy.simplify.trigsimp import exptrigsimp\n\nprint(exptrigsimp(1))\n",
+      "expected_output": [
+        "1"
+      ]
+    }
+  ]
+}

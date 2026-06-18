@@ -1,0 +1,13 @@
+{
+  "task": "v4_markdownify_heading_and_newline_styles",
+  "cases": [
+    {
+      "entry": "from markdownify import MarkdownConverter, ATX_CLOSED, BACKSLASH\n\nclosed = MarkdownConverter(heading_style=ATX_CLOSED).convert_hN(\n    7, None, '  Deep\\nHeading  ', set()\n).replace('\\n', '|')\nsoft = MarkdownConverter().convert_br(None, '', set()).replace('\\n', '<NL>')\nhard = MarkdownConverter(newline_style=BACKSLASH).convert_br(None, '', set()).replace('\\n', '<NL>')\n\nprint([closed, soft, hard])\nprint(closed.count('#'))\nprint(hard)\n",
+      "expected_output": [
+        "['||###### Deep Heading ######||', '  <NL>', '\\\\<NL>']",
+        "12",
+        "\\<NL>"
+      ]
+    }
+  ]
+}

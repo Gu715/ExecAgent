@@ -1,0 +1,2 @@
+requests/auth.py
+requests/compat.py

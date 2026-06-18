@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_6",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\ncode_html = '<pre>test |  foo | bar</pre>'\nlines = markdownify(code_html, code_language=\"python\").strip().splitlines()\ninner = lines[1:-1]\nstate = {\"fence\": lines[0] + lines[-1], \"inner\": inner, \"pipes\": sum(line.count(\"|\") for line in inner)}\n\nprint(lines)\nprint(inner)\nprint(state)\n",
+      "expected_output": [
+        "['```python', 'test |  foo | bar', '```']",
+        "['test |  foo | bar']",
+        "{'fence': '```python```', 'inner': ['test |  foo | bar'], 'pipes': 2}"
+      ]
+    }
+  ]
+}

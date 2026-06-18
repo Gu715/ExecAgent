@@ -1,0 +1,12 @@
+{
+  "task": "004_scikit-learn_task27",
+  "cases": [
+    {
+      "entry": "from sklearn.preprocessing import OrdinalEncoder\n\nencoder = OrdinalEncoder(categories=\"auto\")\nprint(encoder.categories)\nprint(encoder.dtype is not None)\n",
+      "expected_output": [
+        "auto",
+        "True"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task": "v4_w3lib_html_entity_cdata_tag_filters",
+  "cases": [
+    {
+      "entry": "from w3lib.html import replace_entities\n\nprint(replace_entities(\"Tom &amp; Jerry\"))\n",
+      "expected_output": [
+        "Tom & Jerry"
+      ]
+    }
+  ]
+}

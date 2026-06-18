@@ -1,0 +1,13 @@
+{
+  "task": "v3_glom_complex_5",
+  "cases": [
+    {
+      "entry": "from glom.core import Coalesce, glom\nfrom glom.mutation import assign\n\ntarget = {'user': {'profile': {'nickname': '', 'name': 'Ada'}}}\nname = glom(target, Coalesce('user.profile.alias', 'user.profile.nickname', 'user.profile.name', skip=''))\nassign(target, 'user.settings.theme.color', 'blue', missing=dict)\nassign(target, 'user.settings.owner', name, missing=dict)\n\nprint(name)\nprint(target)\nprint(sorted(target['user']['settings'].items()))\n",
+      "expected_output": [
+        "Ada",
+        "{'user': {'profile': {'nickname': '', 'name': 'Ada'}, 'settings': {'theme': {'color': 'blue'}, 'owner': 'Ada'}}}",
+        "[('owner', 'Ada'), ('theme', {'color': 'blue'})]"
+      ]
+    }
+  ]
+}

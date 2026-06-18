@@ -1,0 +1,13 @@
+{
+  "task": "v3_pint_complex_5",
+  "cases": [
+    {
+      "entry": "matrix = [[1, 2, 3], [4, 5, 6]]\ndeps = {\"cook\": {\"shop\"}, \"eat\": {\"cook\"}, \"clean\": {\"eat\"}, \"shop\": set()}\nlevels = [sorted(group) for group in solve_dependencies({key: set(value) for key, value in deps.items()})]\nitems = [(\"second\", -1), (\"meter\", 1), (\"kilogram\", 1)]\nstate = {\n    \"matrix\": matrix_apply(matrix, decrement)[0],\n    \"levels\": [group[0] for group in levels],\n    \"format\": formatter(items, single_denominator=True),\n}\n\nprint(state)\nprint(state[\"levels\"][1:])\nprint(state[\"format\"].replace(\" / \", \" per \"))\n",
+      "expected_output": [
+        "{'matrix': [0, 1, 2], 'levels': ['shop', 'cook', 'eat', 'clean'], 'format': 'kilogram * meter / second'}",
+        "['cook', 'eat', 'clean']",
+        "kilogram * meter per second"
+      ]
+    }
+  ]
+}

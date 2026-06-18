@@ -1,0 +1,107 @@
+YOU ARE A PYTHON PROGRAM ANALYST.
+Your job is to simulate execution using the given source code and CFG, and derive the final answer for the given concrete input.
+Write your reasoning as a compact block-by-block execution trace, then give the final result after [Result].
+
+[Code]
+```python
+def get_retry_after(headers):
+    
+    
+    
+
+    try:
+        retry_after = headers['retry-after']
+    except KeyError:
+        return None
+
+    if not retry_after:  
+        return None
+
+    retry_after = retry_after.strip()
+
+    
+    
+
+    try:
+        
+        seconds = int(retry_after)
+    except ValueError:
+        
+        retry_date_tuple = email.utils.parsedate_tz(retry_after)
+        if retry_date_tuple is None:
+            logger.warning('Invalid Retry-After header: %s', retry_after)
+            return None
+        retry_date = email.utils.mktime_tz(retry_date_tuple)
+        seconds = retry_date - time.time()
+
+    if seconds < 0:
+        seconds = 0
+
+    return seconds
+```
+
+[CFG]
+```
+### CFG: get_retry_after
+B1: None
+  ->B2
+
+B2: try:
+  retry_after = headers['retry-after']
+  ->B3
+
+B3: if not retry_after:
+  ->B4 case (not retry_after)
+  ->B5 case (not not retry_after)
+
+B4: return None
+
+B5: retry_after = retry_after.strip()
+  ->B6
+
+B6: try:
+  seconds = int(retry_after)
+  ->B7
+
+B7: if seconds < 0:
+  ->B8 case (seconds < 0)
+  ->B9 case (seconds >= 0)
+
+B8: seconds = 0
+  ->B9
+
+B9: return seconds
+```
+
+[Input]
+```
+{'retry-after': '42'}
+```
+
+[Output requirements]
+Return exactly two top-level sections in this order:
+[TRACE]
+<Your simulated execution trace>
+[/TRACE]
+
+[RESULT]<the exact final result>[/RESULT]
+
+Your trace should be a compact semi-formal execution trace in natural language.
+Write it as a sequence of local execution blocks.
+For each trace block, include as much of the following as is relevant:
+- the current block
+- the statement, operation, or event being executed
+- the relevant state after this part of execution
+- the next block or control-flow destination
+Prefer one paragraph per trace block.
+A trace block may contain multiple short sentences, but it should stay unified rather than split into separate mini-sections.
+Keep each trace block local, concrete, and easy to follow.
+
+Example style for trace:
+At b1, `i = 0` and `acc = 0` are established, after which control reaches the loop header at `b2`.
+At b2, the condition `i < 2` is true under the current state, so execution takes the loop body at `b3`.
+At b3, `acc += i` runs and keeps `acc = 0`; the update block `b4` then advances `i` to `1` and sends control back to `b2`.
+At b2, the condition still holds, so the body runs once more: `b3` updates `acc` to `1`, `b4` advances `i` to `2`, and control returns to `b2`.
+At b2, the condition is now false, so execution exits the loop to `b5`, which returns `acc = 1`.
+
+Result must be the exact Python value representation of the final result.

@@ -1,0 +1,11 @@
+{
+  "task": "v2_w3lib_url_data_auth_mix",
+  "cases": [
+    {
+      "entry": "from w3lib.html import replace_escape_chars\n\nprint(replace_escape_chars(\"a\\nb\\tc\", replace_by=\"|\"))\n",
+      "expected_output": [
+        "a|b|c"
+      ]
+    }
+  ]
+}

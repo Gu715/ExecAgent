@@ -1,0 +1,11 @@
+{
+  "task": "004_django_task4",
+  "cases": [
+    {
+      "entry": "from collections import OrderedDict\n\nwidget = SelectDateWidget(\n    attrs={},\n    years=[2007],\n    months=OrderedDict([\n        (1, 'January'), (2, 'February'), (3, 'March'), (4, 'April'),\n        (5, 'May'), (6, 'June'), (7, 'July'), (8, 'August'),\n        (9, 'September'), (10, 'October'), (11, 'November'), (12, 'December'),\n    ]),\n    empty_label=['---', '---', '---'],\n)\n\ncontext = widget.get_context('mydate', '', None)\nsummary = [\n    (subwidget['name'], subwidget['attrs'].get('id'), len(subwidget['optgroups']))\n    for subwidget in context['widget']['subwidgets']\n]\nprint(summary)\n",
+      "expected_output": [
+        "[('mydate_month', 'id_mydate_month', 13), ('mydate_day', 'id_mydate_day', 32), ('mydate_year', 'id_mydate_year', 2)]"
+      ]
+    }
+  ]
+}

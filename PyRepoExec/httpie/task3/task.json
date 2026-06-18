@@ -1,0 +1,11 @@
+{
+  "task": "003_httpie_task3",
+  "cases": [
+    {
+      "entry": "processor = convert_json_value_to_form_if_needed(\n    in_json_mode=False,\n    processor=process_data_raw_json_embed_arg,\n)\n\nresult = processor(KeyValueArg('message', '\"line\\\\nbreak\"', ':=', 'message:=\"line\\\\nbreak\"'))\nprint(repr(result))\n",
+      "expected_output": [
+        "'line\\nbreak'"
+      ]
+    }
+  ]
+}

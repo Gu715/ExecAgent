@@ -1,0 +1,13 @@
+{
+  "task": "v4_w3lib_query_cleaner_unique_fragment",
+  "cases": [
+    {
+      "entry": "from w3lib.url import url_query_cleaner, url_query_parameter\n\nurl = \"http://ex.com/path?a=1&b=2&a=3&empty=&c=4#frag\"\nkept = url_query_cleaner(url, [\"a\", \"empty\"], unique=False, keep_fragments=True)\nremoved = url_query_cleaner(url, [\"b\", \"c\"], remove=True, keep_fragments=False)\nvalues = [\n    url_query_parameter(kept, \"a\"),\n    url_query_parameter(kept, \"empty\"),\n    url_query_parameter(kept, \"empty\", keep_blank_values=1),\n]\n\nprint(kept)\nprint(removed)\nprint(values)\n",
+      "expected_output": [
+        "http://ex.com/path?a=1&a=3&empty=#frag",
+        "http://ex.com/path?a=1&empty=",
+        "['1', None, '']"
+      ]
+    }
+  ]
+}

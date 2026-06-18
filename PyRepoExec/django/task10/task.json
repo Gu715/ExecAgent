@@ -1,0 +1,11 @@
+{
+  "task": "010_django_task10",
+  "cases": [
+    {
+      "entry": "result = replace_named_groups(\n    r'^(?P<archive>articles/(?P<year>\\d{4})/(?P<slug>[-\\w]+))/(?P<page>\\d{1,2})/$'\n)\nprint(result)\n",
+      "expected_output": [
+        "^<archive>/<page>/$"
+      ]
+    }
+  ]
+}

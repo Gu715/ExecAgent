@@ -1,0 +1,11 @@
+{
+  "task": "003_django_task3",
+  "cases": [
+    {
+      "entry": "from decimal import Decimal\n\nresult = format(\n    Decimal('1234567.8912'),\n    '.',\n    decimal_pos=3,\n    grouping=3,\n    thousand_sep=',',\n    force_grouping=True,\n    use_l10n=False,\n)\nprint(result)\n",
+      "expected_output": [
+        "1,234,567.891"
+      ]
+    }
+  ]
+}

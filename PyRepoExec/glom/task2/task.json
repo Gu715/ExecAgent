@@ -1,0 +1,13 @@
+{
+  "task": "v3_glom_complex_2",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\n\ntarget = {\n    'users': [\n        {'id': 'u1', 'profile': {'name': 'Ada', 'stats': {'score': 7, 'level': 2}}},\n        {'id': 'u2', 'profile': {'name': 'Lin', 'stats': {'score': 11, 'level': 4}}},\n    ],\n    'groups': [{'name': 'admin', 'users': ['u2']}],\n}\nstats = glom(target, 'users.1.profile.stats')\nstate = {\"stats\": stats, \"score_plus_level\": stats['score'] + stats['level']}\n\nprint(state)\nprint(sorted(stats.items()))\nprint(state[\"score_plus_level\"])\n",
+      "expected_output": [
+        "{'stats': {'score': 11, 'level': 4}, 'score_plus_level': 15}",
+        "[('level', 4), ('score', 11)]",
+        "15"
+      ]
+    }
+  ]
+}

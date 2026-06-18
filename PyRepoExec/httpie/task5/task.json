@@ -1,0 +1,11 @@
+{
+  "task": "005_httpie_task5",
+  "cases": [
+    {
+      "entry": "args = [\n    KeyValueArg('tag', 'x', '==', 'tag==x'),\n    KeyValueArg('page', '1', '==', 'page==1'),\n    KeyValueArg('tag', 'y', '==', 'tag==y'),\n    KeyValueArg('sort', 'asc', '==', 'sort==asc'),\n    KeyValueArg('page', '2', '==', 'page==2'),\n]\nitems = RequestItems.from_args(args, request_type=RequestType.JSON)\nprint(items.params)\n",
+      "expected_output": [
+        "RequestQueryParamsDict([('tag', ['x', 'y']), ('page', ['1', '2']), ('sort', 'asc')])"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "task": "v3_glom_complex_3",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\n\ntarget = {\n    'teams': [\n        {'name': 'red', 'members': [{'name': 'Ada', 'score': 7}, {'name': 'Bob', 'score': 3}]},\n        {'name': 'blue', 'members': [{'name': 'Cyd', 'score': 5}, {'name': 'Dan', 'score': 9}]},\n    ],\n    'archive': {'teams': []},\n}\nmembers = glom(target, ('teams', ['members']))\nflat = [user['name'] for group in members for user in group if user['score'] >= 5]\n\nprint(members)\nprint(flat)\nprint({name: len(name) for name in flat})\n",
+      "expected_output": [
+        "[[{'name': 'Ada', 'score': 7}, {'name': 'Bob', 'score': 3}], [{'name': 'Cyd', 'score': 5}, {'name': 'Dan', 'score': 9}]]",
+        "['Ada', 'Cyd', 'Dan']",
+        "{'Ada': 3, 'Cyd': 3, 'Dan': 3}"
+      ]
+    }
+  ]
+}

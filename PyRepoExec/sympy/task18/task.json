@@ -1,0 +1,12 @@
+{
+  "task": "018_sympy_task18",
+  "cases": [
+    {
+      "entry": "from sympy import symbols\nfrom sympy.core.exprtools import _isnumber\n\nx = symbols(\"x\")\nprint(_isnumber(3))\nprint(_isnumber(x))\n",
+      "expected_output": [
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

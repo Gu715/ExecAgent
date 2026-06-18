@@ -1,0 +1,13 @@
+{
+  "task": "002_scikit-learn_task20",
+  "cases": [
+    {
+      "entry": "from sklearn.kernel_approximation import RBFSampler\n\nsampler = RBFSampler(gamma=0.5, n_components=4, random_state=0)\nprint(sampler.gamma)\nprint(sampler.n_components)\nprint(sampler.random_state)\n",
+      "expected_output": [
+        "0.5",
+        "4",
+        "0"
+      ]
+    }
+  ]
+}

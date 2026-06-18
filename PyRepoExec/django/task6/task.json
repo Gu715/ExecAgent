@@ -1,0 +1,11 @@
+{
+  "task": "006_django_task6",
+  "cases": [
+    {
+      "entry": "lib = Library()\nreturned = lib.simple_tag(greet)\nprint((returned is greet, sorted(lib.tags), lib.tags['greet'].__name__))\n",
+      "expected_output": [
+        "(True, ['greet'], 'greet')"
+      ]
+    }
+  ]
+}

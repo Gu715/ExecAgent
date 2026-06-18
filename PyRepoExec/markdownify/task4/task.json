@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_4",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nnested_html = (\n    '<ul><li>1<ul><li>a<ul><li>I</li><li>II</li><li>III</li></ul></li>'\n    '<li>b</li><li>c</li></ul></li><li>2</li><li>3</li></ul>'\n)\nlines = markdownify(nested_html).strip().splitlines()\nlevels = {\"star\": 0, \"plus\": 0, \"dash\": 0}\nfor line in lines:\n    stripped = line.strip()\n    if stripped.startswith(\"*\"):\n        levels[\"star\"] += 1\n    elif stripped.startswith(\"+\"):\n        levels[\"plus\"] += 1\n    elif stripped.startswith(\"-\"):\n        levels[\"dash\"] += 1\n\nprint(lines)\nprint(levels)\nprint(lines[2:5])\n",
+      "expected_output": [
+        "['* 1', '  + a', '    - I', '    - II', '    - III', '  + b', '  + c', '* 2', '* 3']",
+        "{'star': 3, 'plus': 3, 'dash': 3}",
+        "['    - I', '    - II', '    - III']"
+      ]
+    }
+  ]
+}

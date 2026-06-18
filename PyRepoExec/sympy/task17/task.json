@@ -1,0 +1,12 @@
+{
+  "task": "017_sympy_task17",
+  "cases": [
+    {
+      "entry": "from sympy import And, Or\n\nprint(And(True, False))\nprint(Or(False, True))\n",
+      "expected_output": [
+        "False",
+        "True"
+      ]
+    }
+  ]
+}

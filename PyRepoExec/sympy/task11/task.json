@@ -1,0 +1,12 @@
+{
+  "task": "011_sympy_task11",
+  "cases": [
+    {
+      "entry": "from sympy import Product, symbols\n\nk = symbols(\"k\", integer=True)\np = Product(2, (k, 1, 3))\nprint(p.function)\nprint(p.limits)\n",
+      "expected_output": [
+        "2",
+        "((k, 1, 3),)"
+      ]
+    }
+  ]
+}

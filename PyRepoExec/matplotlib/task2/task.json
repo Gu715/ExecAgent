@@ -1,0 +1,13 @@
+{
+  "task": "002_matplotlib_task2",
+  "cases": [
+    {
+      "entry": "from matplotlib.ticker import FixedFormatter, FormatStrFormatter\n\nfmt = FormatStrFormatter(\"value=%0.1f\")\nfixed = FixedFormatter([\"A\", \"B\"])\nprint(fmt(2.5))\nprint(fixed(10, pos=1))\nprint(fixed(10, pos=3))\n",
+      "expected_output": [
+        "value=2.5",
+        "B",
+        ""
+      ]
+    }
+  ]
+}

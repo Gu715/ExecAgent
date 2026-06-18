@@ -1,0 +1,13 @@
+{
+  "task": "v4_django_route_to_regex_non_endpoint",
+  "cases": [
+    {
+      "entry": "from django.urls.converters import get_converter\n\nconv = get_converter(\"path\")\nprint(conv.regex)\nprint(conv.to_python(\"a/b\"))\nprint(conv.to_url(\"tail\"))\n",
+      "expected_output": [
+        ".+",
+        "a/b",
+        "tail"
+      ]
+    }
+  ]
+}

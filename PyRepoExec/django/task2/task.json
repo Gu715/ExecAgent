@@ -1,0 +1,11 @@
+{
+  "task": "002_django_task2",
+  "cases": [
+    {
+      "entry": "result = _sqlite_datetime_parse(\n    '2016-06-13 00:00:00',\n    tzname='Asia/Tokyo'\n)\nprint(result)\n",
+      "expected_output": [
+        "2016-06-13 09:00:00+09:00"
+      ]
+    }
+  ]
+}

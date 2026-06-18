@@ -1,0 +1,12 @@
+{
+  "task": "013_django_task13",
+  "cases": [
+    {
+      "entry": "left = Media(css={'all': ['base.css'], 'print': ['print-a.css']}, js=['base.js', 'shared.js'])\nmid = Media(css={'all': ['base.css'], 'screen': ['screen-mid.css']}, js=['shared.js', 'mid.js'])\nright = Media(css={'all': ['theme.css'], 'screen': ['screen-mid.css', 'screen-final.css']}, js=['base.js', 'theme.js'])\nresult = left + mid + right\nprint(result._css_lists)\nprint(result._js_lists)\n",
+      "expected_output": [
+        "[{'all': ['base.css'], 'print': ['print-a.css']}, {'all': ['base.css'], 'screen': ['screen-mid.css']}, {'all': ['theme.css'], 'screen': ['screen-mid.css', 'screen-final.css']}]",
+        "[['base.js', 'shared.js'], ['shared.js', 'mid.js'], ['base.js', 'theme.js']]"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+django/db/models/manager.py
+django/db/models/query.py

@@ -1,0 +1,5 @@
+[TRACE]
+At B1, `merged = source.copy()` creates a new empty dictionary `merged = {}`. Then `merged.update(overrides)` updates it with the empty overrides dictionary, leaving `merged` unchanged as `{}`. Control then flows to B2. At B2, `return merged` returns the empty dictionary `{}`.
+[/TRACE]
+
+[RESULT]{}[/RESULT]

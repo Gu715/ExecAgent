@@ -1,0 +1,12 @@
+{
+  "task": "031_sympy_task31",
+  "cases": [
+    {
+      "entry": "from sympy.diffgeom import contravariant_order, covariant_order\n\nprint(contravariant_order(1))\nprint(covariant_order(1))\n",
+      "expected_output": [
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

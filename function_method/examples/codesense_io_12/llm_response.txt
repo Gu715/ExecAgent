@@ -1,0 +1,15 @@
+[TRACE]
+At B1, `datemode=0` is in `(0,1)` so condition false, proceed to B3.  
+At B3, `xldate=2741.0` is not `0.0`, so condition false, go to B5.  
+At B5, `xldate` is not negative, so condition false, go to B7.  
+At B7, set `xldays=2741`, `frac=0.0`, `seconds=0`; assert holds, go to B8.  
+At B8, `seconds=0` is not `86400`, go to B10.  
+At B10, `divmod(0,60)` gives minutes=0, second=0; then `divmod(0,60)` gives hour=0, minute=0; go to B11.  
+At B11, `xldays=2741 < _XLDAYS_TOO_LARGE[0]` (assumed large), so condition false, go to B13.  
+At B13, `xldays!=0`, go to B15.  
+At B15, `xldays<61` false, go to B17.  
+At B17, compute `jdn=2741+2415019=2417760`; then `yreg=9676699`, `mp=66673`, `d=3`; after `mp>>=14`, `mp=4`; go to B18.  
+At B18, `mp=4<10`, go to B20.  
+At B20, return `(ifd(yreg,1461)-4716, mp+3, d, hour, minute, second)`. `ifd(yreg,1461)=6623`, so `year=1907`, `month=7`, `day=3`, `hour=0`, `minute=0`, `second=0`.
+[/TRACE]
+[RESULT](1907, 7, 3, 0, 0, 0)[/RESULT]

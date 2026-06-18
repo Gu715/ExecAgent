@@ -1,0 +1,22 @@
+{
+  "task": "v2_pint_matrix_graph_units",
+  "cases": [
+    {
+      "entry": "matrix = [[1, 2, 3], [4, 5, 6]]\nsnapshots = []\nsnapshots.append(transpose(matrix))\nsnapshots.append(matrix_apply(matrix, decrement))\n\ndeps = {\n    \"cook\": {\"shop\"},\n    \"eat\": {\"cook\"},\n    \"clean\": {\"eat\"},\n    \"shop\": set(),\n}\nlevels = [sorted(group) for group in solve_dependencies({key: set(value) for key, value in deps.items()})]\ngraph = {\n    \"parse\": {\"plan\"},\n    \"plan\": {\"run\"},\n    \"run\": {\"verify\"},\n    \"verify\": set(),\n}\npath = find_shortest_path(graph, \"parse\", \"verify\")\n\nprint(snapshots)\nprint(levels)\nprint(path)\nprint((snapshots[0][0], snapshots[1][-1], levels[-1], path[-1]))\n",
+      "expected_output": [
+        "[[[1, 4], [2, 5], [3, 6]], [[0, 1, 2], [3, 4, 5]]]",
+        "[['shop'], ['cook'], ['eat'], ['clean']]",
+        "['parse', 'plan', 'run', 'verify']",
+        "([1, 4], [3, 4, 5], ['clean'], 'verify')"
+      ]
+    },
+    {
+      "entry": "u1 = UnitsContainer({\"meter\": 1, \"second\": -1})\nu2 = UnitsContainer({\"second\": -1, \"ampere\": 2})\ncombo = {\"mul\": u1 * u2, \"div\": u1 / u2, \"pow\": u2 ** 2}\nitems = [(\"second\", -1), (\"meter\", 1), (\"kilogram\", 1)]\nformatted = [\n    formatter(items),\n    formatter(items, single_denominator=True),\n    formatter(items, as_ratio=False),\n]\n\nprint(combo)\nprint(formatted)\nprint((combo[\"div\"], formatted[-1]))\n",
+      "expected_output": [
+        "{'mul': UnitsContainer({'meter': 1, 'second': -2, 'ampere': 2}), 'div': UnitsContainer({'meter': 1, 'ampere': -2}), 'pow': UnitsContainer({'second': -2, 'ampere': 4})}",
+        "['kilogram * meter / second', 'kilogram * meter / second', 'kilogram * meter * second ** -1']",
+        "(UnitsContainer({'meter': 1, 'ampere': -2}), 'kilogram * meter * second ** -1')"
+      ]
+    }
+  ]
+}

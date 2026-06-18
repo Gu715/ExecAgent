@@ -1,0 +1,12 @@
+{
+  "task": "014_django_task14",
+  "cases": [
+    {
+      "entry": "print(AbstractBaseUser.is_active)\nprint(AbstractBaseUser.REQUIRED_FIELDS)\n",
+      "expected_output": [
+        "True",
+        "[]"
+      ]
+    }
+  ]
+}

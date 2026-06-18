@@ -1,0 +1,11 @@
+{
+  "task": "030_sympy_task30",
+  "cases": [
+    {
+      "entry": "from sympy.simplify.simplify import signsimp\n\nprint(signsimp(1))\n",
+      "expected_output": [
+        "1"
+      ]
+    }
+  ]
+}

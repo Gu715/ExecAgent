@@ -1,0 +1,13 @@
+{
+  "task": "v4_pint_dependency_external_nodes_and_cycle",
+  "cases": [
+    {
+      "entry": "deps = {\n    \"build\": {\"fetch\", \"compile\"},\n    \"compile\": {\"parse\"},\n    \"test\": {\"build\"},\n    \"parse\": set(),\n}\nlevels = [sorted(group) for group in solve_dependencies({key: set(value) for key, value in deps.items()})]\ntry:\n    list(solve_dependencies({\"a\": {\"b\"}, \"b\": {\"a\"}}))\nexcept ValueError as exc:\n    message = str(exc).split(\": \")[0]\n\nprint(levels)\nprint(levels[0])\nprint(message)\n",
+      "expected_output": [
+        "[['fetch', 'parse'], ['compile'], ['build'], ['test']]",
+        "['fetch', 'parse']",
+        "Cyclic dependencies exist among these items"
+      ]
+    }
+  ]
+}

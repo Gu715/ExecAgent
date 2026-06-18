@@ -1,0 +1,13 @@
+{
+  "task": "v4_glom_extract_then_nested_assign_summary",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\nfrom glom.mutation import assign\n\ntarget = {\n    'teams': [\n        {'name': 'red', 'members': [{'name': 'Ada'}, {'name': 'Bob'}]},\n        {'name': 'blue', 'members': [{'name': 'Cyd'}]},\n    ]\n}\nteam_names = glom(target, ('teams', ['name']))\nmembers = glom(target, ('teams', ['members']))\ncounts = {team: len(group) for team, group in zip(team_names, members)}\nassign(target, 'summary.teams', team_names, missing=dict)\nassign(target, 'summary.counts', counts, missing=dict)\n\nprint(team_names)\nprint(counts)\nprint(target['summary'])\n",
+      "expected_output": [
+        "['red', 'blue']",
+        "{'red': 2, 'blue': 1}",
+        "{'teams': ['red', 'blue'], 'counts': {'red': 2, 'blue': 1}}"
+      ]
+    }
+  ]
+}

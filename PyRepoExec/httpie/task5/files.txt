@@ -1,0 +1,5 @@
+httpie/cli/argtypes.py
+httpie/cli/constants.py
+httpie/cli/dicts.py
+httpie/cli/requestitems.py
+httpie/utils.py

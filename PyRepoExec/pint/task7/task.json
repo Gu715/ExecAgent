@@ -1,0 +1,13 @@
+{
+  "task": "v4_pint_matrix_to_string_and_connected_nodes",
+  "cases": [
+    {
+      "entry": "matrix = [[1.25, 2.5], [3.75, 4.0]]\ntext = matrix_to_string(\n    matrix,\n    row_headers=[\"r1\", \"r2\"],\n    col_headers=[\"c1\", \"c2\"],\n    fmtfun=lambda value: f\"{value:.1f}\",\n)\ngraph = {\"a\": {\"b\", \"c\"}, \"b\": {\"d\"}, \"c\": {\"d\"}, \"d\": set(), \"z\": set()}\nconnected = sorted(find_connected_nodes(graph, \"a\"))\nmissing = find_connected_nodes(graph, \"missing\")\n\nprint(text.splitlines())\nprint(connected)\nprint(missing)\n",
+      "expected_output": [
+        "['\\tc1\\tc2', 'r1\\t1.2\\t2.5', 'r2\\t3.8\\t4.0']",
+        "['a', 'b', 'c', 'd']",
+        "None"
+      ]
+    }
+  ]
+}

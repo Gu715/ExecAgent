@@ -1,0 +1,18 @@
+{
+  "task": "001_astropy_task1",
+  "cases": [
+    {
+      "entry": "import numpy as np\n\nm = Unit('m')\ncm = Unit('cm')\nq = np.array([0.0]).view(Quantity)\nq._set_unit(m)\n\nresult = q._result_as_quantity(\n    (\n        np.array([[1.5, 2.5], [3.5, 4.5]]),\n        np.array([10.0, 20.0, 30.0]),\n    ),\n    (m, cm),\n    None,\n)\n\nfor item in result:\n    print(type(item).__name__)\n    print(item)\n    print(item.unit)\n    print(item.shape)\n",
+      "expected_output": [
+        "Quantity",
+        "[[1.5 2.5]\n [3.5 4.5]] m",
+        "m",
+        "(2, 2)",
+        "Quantity",
+        "[10. 20. 30.] cm",
+        "cm",
+        "(3,)"
+      ]
+    }
+  ]
+}

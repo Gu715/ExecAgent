@@ -1,0 +1,11 @@
+[TRACE]
+At B1, execution begins with no state. Control flows to B2.
+At B2, the try block executes: `retry_after = headers['retry-after']` retrieves the value `'42'` from the input dictionary. Next, control goes to B3.
+At B3, the condition `if not retry_after:` is evaluated; since `'42'` is truthy, the condition is false, so execution proceeds to B5 (the fall-through case).
+At B5, `retry_after = retry_after.strip()` is called, resulting in `'42'` (no change). Then control goes to B6.
+At B6, the try block executes `seconds = int(retry_after)`, which successfully converts the string to the integer `42`. No exception is raised. Control proceeds to B7.
+At B7, the condition `if seconds < 0:` is checked; `42` is not less than `0`, so the false branch is taken, leading to B9.
+At B9, the function returns `seconds`, which is `42`.
+[/TRACE]
+
+[RESULT]42[/RESULT]

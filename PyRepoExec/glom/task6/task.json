@@ -1,0 +1,13 @@
+{
+  "task": "v3_glom_complex_6",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\nfrom glom.mutation import assign\n\ntarget = {'users': [{'name': 'Ada', 'score': 3}, {'name': 'Bob', 'score': 5}, {'name': 'Cy', 'score': 8}]}\nnames = glom(target, ('users', ['name']))\nassign(target, 'summary.names', names, missing=dict)\nassign(target, 'summary.count', len(names), missing=dict)\n\nprint(names)\nprint(target['summary'])\nprint(target)\n",
+      "expected_output": [
+        "['Ada', 'Bob', 'Cy']",
+        "{'names': ['Ada', 'Bob', 'Cy'], 'count': 3}",
+        "{'users': [{'name': 'Ada', 'score': 3}, {'name': 'Bob', 'score': 5}, {'name': 'Cy', 'score': 8}], 'summary': {'names': ['Ada', 'Bob', 'Cy'], 'count': 3}}"
+      ]
+    }
+  ]
+}

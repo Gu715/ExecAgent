@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_5",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nordered_html = '<ol start=\"3\"><li>a</li><li>b</li></ol>'\ntable_html = (\n    '<table><tbody>'\n    '<tr><td>Firstname</td><td>Lastname</td><td>Age</td></tr>'\n    '<tr><td>Jill</td><td>Smith</td><td>50</td></tr>'\n    '<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>'\n    '</tbody></table>'\n)\nordered = markdownify(ordered_html).strip().splitlines()\ntable = markdownify(table_html).strip().splitlines()\nsummary = [(\"ordered\", ordered[-1]), (\"rows\", len(table)), (\"age\", table[-1].split(\"|\")[-2].strip())]\n\nprint(ordered)\nprint(table[:2])\nprint(summary)\n",
+      "expected_output": [
+        "['3. a', '4. b']",
+        "['|  |  |  |', '| --- | --- | --- |']",
+        "[('ordered', '4. b'), ('rows', 5), ('age', '94')]"
+      ]
+    }
+  ]
+}

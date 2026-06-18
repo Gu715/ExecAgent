@@ -1,0 +1,12 @@
+{
+  "task": "018_django_task18",
+  "cases": [
+    {
+      "entry": "result = get_format('DATE_INPUT_FORMATS', lang='en', use_l10n=True)\nprint(result)\nprint(_format_cache)\n",
+      "expected_output": [
+        "['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y']",
+        "{('DATE_INPUT_FORMATS', 'en'): ['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y']}"
+      ]
+    }
+  ]
+}

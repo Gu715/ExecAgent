@@ -1,0 +1,11 @@
+[TRACE]
+At B1, the condition `line.startswith(prefix)` is true because `line = 'ic| eins: zwei'` starts with `'ic| '`, so execution proceeds to B2.
+At B2, `line` is reassigned to `line[len(prefix):]`, which is `'eins: zwei'`, then control flows to B3.
+At B3, `toks = line.split(' in ', 1)` splits `'eins: zwei'` at the substring `' in '`; since no such substring exists, `toks` becomes `['eins: zwei']`, a list with one element, and control goes to B4.
+At B4, the condition `len(toks) == 2` is false (length is 1), so execution jumps to B6.
+At B6, the function returns `line`, which is `'eins: zwei'`.
+[/TRACE]
+
+[RESULT]
+'eins: zwei'
+[/RESULT]

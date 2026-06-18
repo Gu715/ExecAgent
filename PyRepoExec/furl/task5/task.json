@@ -1,0 +1,12 @@
+{
+  "task": "v3_furl_complex_5",
+  "cases": [
+    {
+      "entry": "from furl.common import callable_attr\n\nitems = []\nprint(callable_attr(items, \"append\"))\nprint(callable_attr(items, \"missing\"))\n",
+      "expected_output": [
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

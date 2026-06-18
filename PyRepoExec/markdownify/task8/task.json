@@ -1,0 +1,13 @@
+{
+  "task": "v4_markdownify_internal_code_backticks",
+  "cases": [
+    {
+      "entry": "from markdownify import MarkdownConverter\n\nconv = MarkdownConverter()\nvalues = [\n    conv.convert_code(None, 'tick ` one', set()),\n    conv.convert_code(None, 'pair `` two', set()),\n    conv.convert_code(None, ' plain ', set()),\n]\n\nprint(values)\nprint([value.count('`') for value in values])\nprint(values[1])\n",
+      "expected_output": [
+        "['`` tick ` one ``', '``` pair `` two ```', ' `plain` ']",
+        "[5, 8, 2]",
+        "``` pair `` two ```"
+      ]
+    }
+  ]
+}

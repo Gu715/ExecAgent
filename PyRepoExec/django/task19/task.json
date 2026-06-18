@@ -1,0 +1,11 @@
+{
+  "task": "019_django_task19",
+  "cases": [
+    {
+      "entry": "field = URLField()\nfield.assume_scheme = 'https'\nfield.error_messages = {'invalid': 'invalid'}\nresult = field.to_python('sub.example.com/path;params?x=1&y=2#frag')\nprint(result)\n",
+      "expected_output": [
+        "https://sub.example.com/path;params?x=1&y=2#frag"
+      ]
+    }
+  ]
+}

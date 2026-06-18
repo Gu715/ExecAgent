@@ -1,0 +1,11 @@
+{
+  "task": "v3_w3lib_complex_3",
+  "cases": [
+    {
+      "entry": "from w3lib.html import remove_tags\n\nprint(remove_tags(\"<p>Hello <b>A</b></p>\"))\n",
+      "expected_output": [
+        "Hello A"
+      ]
+    }
+  ]
+}

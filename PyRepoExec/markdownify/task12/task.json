@@ -1,0 +1,13 @@
+{
+  "task": "v4_markdownify_table_cell_colspan",
+  "cases": [
+    {
+      "entry": "from markdownify import MarkdownConverter\n\nclass Cell:\n    attrs = {'colspan': '3'}\n    def __getitem__(self, key):\n        return self.attrs[key]\n\ntext = MarkdownConverter().convert_td(Cell(), ' A\\nB ', set())\n\nprint(text)\nprint(text.count('|'))\nprint(text.endswith('|||'))\n",
+      "expected_output": [
+        " A B | | |",
+        "3",
+        "False"
+      ]
+    }
+  ]
+}

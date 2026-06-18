@@ -1,0 +1,151 @@
+YOU ARE A PYTHON PROGRAM ANALYST.
+Your job is to simulate execution using the given source code and CFG, and derive the final answer for the given concrete input.
+Write your reasoning as a compact block-by-block execution trace, then give the final result after [Result].
+
+[Code]
+```python
+def xldate_as_tuple(xldate, datemode):
+    if datemode not in (0, 1):
+        raise XLDateBadDatemode(datemode)
+    if xldate == 0.00:
+        return (0, 0, 0, 0, 0, 0)
+    if xldate < 0.00:
+        raise XLDateNegative(xldate)
+    xldays = int(xldate)
+    frac = xldate - xldays
+    seconds = int(round(frac * 86400.0))
+    assert 0 <= seconds <= 86400
+    if seconds == 86400:
+        hour = minute = second = 0
+        xldays += 1
+    else:
+        
+        minutes, second = divmod(seconds, 60)
+        
+        hour, minute = divmod(minutes, 60)
+    if xldays >= _XLDAYS_TOO_LARGE[datemode]:
+        raise XLDateTooLarge(xldate)
+
+    if xldays == 0:
+        return (0, 0, 0, hour, minute, second)
+
+    if xldays < 61 and datemode == 0:
+        raise XLDateAmbiguous(xldate)
+
+    jdn = xldays + _JDN_delta[datemode]
+    yreg = (ifd(ifd(jdn * 4 + 274277, 146097) * 3, 4) + jdn + 1363) * 4 + 3
+    mp = ifd(yreg % 1461, 4) * 535 + 333
+    d = ifd(mp % 16384, 535) + 1
+    
+    mp >>= 14
+    if mp >= 10:
+        return (ifd(yreg, 1461) - 4715, mp - 9, d, hour, minute, second)
+    else:
+        return (ifd(yreg, 1461) - 4716, mp + 3, d, hour, minute, second)
+```
+
+[CFG]
+```
+### CFG: xldate_as_tuple
+B1: if datemode not in (0, 1):
+  ->B2 case (datemode not in (0, 1))
+  ->B3 case (datemode in (0, 1))
+
+B2: raise XLDateBadDatemode(datemode)
+
+B3: if xldate == 0.0:
+  ->B4 case (xldate == 0.0)
+  ->B5 case (xldate != 0.0)
+
+B4: return (0, 0, 0, 0, 0, 0)
+
+B5: if xldate < 0.0:
+  ->B6 case (xldate < 0.0)
+  ->B7 case (xldate >= 0.0)
+
+B6: raise XLDateNegative(xldate)
+
+B7: xldays = int(xldate)
+  frac = xldate - xldays
+  seconds = int(round(frac * 86400.0))
+  assert 0 <= seconds <= 86400
+  ->B8 case (0 <= seconds <= 86400)
+
+B8: if seconds == 86400:
+  ->B9 case (seconds == 86400)
+  ->B10 case (seconds != 86400)
+
+B9: hour = minute = second = 0
+  xldays += 1
+  ->B11
+
+B10: (minutes, second) = divmod(seconds, 60)
+  (hour, minute) = divmod(minutes, 60)
+  ->B11
+
+B11: if xldays >= _XLDAYS_TOO_LARGE[datemode]:
+  ->B12 case (xldays >= _XLDAYS_TOO_LARGE[datemode])
+  ->B13 case (xldays < _XLDAYS_TOO_LARGE[datemode])
+
+B12: raise XLDateTooLarge(xldate)
+
+B13: if xldays == 0:
+  ->B14 case (xldays == 0)
+  ->B15 case (xldays != 0)
+
+B14: return (0, 0, 0, hour, minute, second)
+
+B15: if xldays < 61 and datemode == 0:
+  ->B16 case (xldays < 61 and datemode == 0)
+  ->B17 case (not (xldays < 61 and datemode == 0))
+
+B16: raise XLDateAmbiguous(xldate)
+
+B17: jdn = xldays + _JDN_delta[datemode]
+  yreg = (ifd(ifd(jdn * 4 + 274277, 146097) * 3, 4) + jdn + 1363) * 4 + 3
+  mp = ifd(yreg % 1461, 4) * 535 + 333
+  d = ifd(mp % 16384, 535) + 1
+  mp >>= 14
+  ->B18
+
+B18: if mp >= 10:
+  ->B19 case (mp >= 10)
+  ->B20 case (mp < 10)
+
+B19: return (ifd(yreg, 1461) - 4715, mp - 9, d, hour, minute, second)
+
+B20: return (ifd(yreg, 1461) - 4716, mp + 3, d, hour, minute, second)
+```
+
+[Input]
+```
+2741.0, 0
+```
+
+[Output requirements]
+Return exactly two top-level sections in this order:
+[TRACE]
+<Your simulated execution trace>
+[/TRACE]
+
+[RESULT]<the exact final result>[/RESULT]
+
+Your trace should be a compact semi-formal execution trace in natural language.
+Write it as a sequence of local execution blocks.
+For each trace block, include as much of the following as is relevant:
+- the current block
+- the statement, operation, or event being executed
+- the relevant state after this part of execution
+- the next block or control-flow destination
+Prefer one paragraph per trace block.
+A trace block may contain multiple short sentences, but it should stay unified rather than split into separate mini-sections.
+Keep each trace block local, concrete, and easy to follow.
+
+Example style for trace:
+At b1, `i = 0` and `acc = 0` are established, after which control reaches the loop header at `b2`.
+At b2, the condition `i < 2` is true under the current state, so execution takes the loop body at `b3`.
+At b3, `acc += i` runs and keeps `acc = 0`; the update block `b4` then advances `i` to `1` and sends control back to `b2`.
+At b2, the condition still holds, so the body runs once more: `b3` updates `acc` to `1`, `b4` advances `i` to `2`, and control returns to `b2`.
+At b2, the condition is now false, so execution exits the loop to `b5`, which returns `acc = 1`.
+
+Result must be the exact Python value representation of the final result.

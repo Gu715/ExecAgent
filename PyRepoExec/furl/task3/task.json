@@ -1,0 +1,12 @@
+{
+  "task": "v3_furl_complex_3",
+  "cases": [
+    {
+      "entry": "from furl.common import callable_attr\n\nclass Obj:\n    value = 1\n    def ok(self):\n        return None\n\nobj = Obj()\nprint(callable_attr(obj, \"ok\"))\nprint(callable_attr(obj, \"value\"))\n",
+      "expected_output": [
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "task": "v3_pint_complex_4",
+  "cases": [
+    {
+      "entry": "u1 = UnitsContainer({\"meter\": 1, \"second\": -1})\nu2 = UnitsContainer({\"second\": -1, \"ampere\": 2})\nitems = [(\"second\", -1), (\"meter\", 1), (\"kilogram\", 1)]\ncombo = [u1 * u2, u1 / u2, u2 ** 2]\ntexts = [formatter(items), formatter(items, as_ratio=False)]\n\nprint(combo)\nprint(texts)\nprint((combo[1], texts[1].split(\" * \")[-1]))\n",
+      "expected_output": [
+        "[UnitsContainer({'meter': 1, 'second': -2, 'ampere': 2}), UnitsContainer({'meter': 1, 'ampere': -2}), UnitsContainer({'second': -2, 'ampere': 4})]",
+        "['kilogram * meter / second', 'kilogram * meter * second ** -1']",
+        "(UnitsContainer({'meter': 1, 'ampere': -2}), 'second ** -1')"
+      ]
+    }
+  ]
+}

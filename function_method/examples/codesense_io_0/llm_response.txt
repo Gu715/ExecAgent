@@ -1,0 +1,8 @@
+[TRACE]
+At B1, the condition `env is not None` is evaluated: `env` is the string `'testing'`, which is not `None`, so control goes to B2.  
+At B2, `env_str = str(env)` is executed, setting `env_str` to `'testing'`, then control proceeds to B7.  
+At B7, the condition `basedir is None` is evaluated: `basedir` is the string `'/home/XXX/.tsecrets'`, not `None`, so control goes to B9 (the else branch).  
+At B9, `return os.path.join(basedir, env_str)` executes, producing the result `'/home/XXX/.tsecrets/testing'`.
+[/TRACE]
+
+[RESULT]'/home/XXX/.tsecrets/testing'[/RESULT]

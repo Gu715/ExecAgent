@@ -1,0 +1,21 @@
+{
+  "task": "v2_pytimeparse_grouping_and_none",
+  "cases": [
+    {
+      "entry": "from pytimeparse2 import parse\n\nitems = [\n    \"2h32m\",\n    \"1 week, 2 days 3hrs, 4minute 5s\",\n    \"7:02.223\",\n    \"2 days,  4:13:02\",\n    \"3 days, 4 hours\",\n]\nvalues = []\nfor item in items:\n    if item.count(\":\") == 1:\n        values.append(parse(item, granularity=\"minutes\"))\n    else:\n        values.append(parse(item))\n\nbucket = {\"large\": [], \"small\": []}\nfor value in values:\n    if value > 100000:\n        bucket[\"large\"].append(value)\n    else:\n        bucket[\"small\"].append(value)\n\nprint(values)\nprint(bucket)\nprint(sum(bucket[\"small\"]))\n",
+      "expected_output": [
+        "[9120, 788645, 422.223, 187982, 273600]",
+        "{'large': [788645, 187982, 273600], 'small': [9120, 422.223]}",
+        "9542.223"
+      ]
+    },
+    {
+      "entry": "from pytimeparse2 import parse\n\npairs = [\n    (\"clock\", parse(\"1:02:03:04\")),\n    (\"words\", parse(\"1d2h3m4s\")),\n    (\"bad\", parse(\"garbage\")),\n    (\"signed\", parse(\"- 1 minute\")),\n]\nnormalized = []\nfor name, value in pairs:\n    if value is None:\n        normalized.append((name, \"NONE\"))\n    elif value < 0:\n        normalized.append((name, abs(value)))\n    else:\n        normalized.append((name, value))\n\nprint(pairs)\nprint(normalized)\nprint(normalized[0][1] == normalized[1][1])\n",
+      "expected_output": [
+        "[('clock', 93784), ('words', 93784), ('bad', None), ('signed', -60)]",
+        "[('clock', 93784), ('words', 93784), ('bad', 'NONE'), ('signed', 60)]",
+        "True"
+      ]
+    }
+  ]
+}

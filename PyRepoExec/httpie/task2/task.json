@@ -1,0 +1,11 @@
+{
+  "task": "002_httpie_task2",
+  "cases": [
+    {
+      "entry": "pairs = [\n    ('user[name]', process_data_item_arg(KeyValueArg('user[name]', 'alice', '=', 'user[name]=alice'))),\n    ('user[age]', process_data_raw_json_embed_arg(KeyValueArg('user[age]', '20', ':=', 'user[age]:=20'))),\n]\nresult = process_data_nested_json_embed_args(pairs)\nprint(result)\n",
+      "expected_output": [
+        "{'user': {'name': 'alice', 'age': 20}}"
+      ]
+    }
+  ]
+}

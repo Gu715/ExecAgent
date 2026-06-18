@@ -1,0 +1,21 @@
+{
+  "task": "v2_glom_extraction_then_mutation",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\n\ntarget = {\n    'users': [\n        {'name': 'Ada', 'score': 3},\n        {'name': 'Bob', 'score': 5},\n        {'name': 'Cy', 'score': 8},\n    ]\n}\nnames = glom(target, ('users', ['name']))\nsummary = {name: len(name) + index for index, name in enumerate(names)}\ntarget['summary'] = summary\n\nprint(names)\nprint(summary)\nprint(target)\n",
+      "expected_output": [
+        "['Ada', 'Bob', 'Cy']",
+        "{'Ada': 3, 'Bob': 4, 'Cy': 4}",
+        "{'users': [{'name': 'Ada', 'score': 3}, {'name': 'Bob', 'score': 5}, {'name': 'Cy', 'score': 8}], 'summary': {'Ada': 3, 'Bob': 4, 'Cy': 4}}"
+      ]
+    },
+    {
+      "entry": "from glom.mutation import assign\n\ntarget = {\n    'user': {\n        'profile': {\n            'name': 'Ada'\n        }\n    }\n}\nassign(target, 'user.settings.theme.color', 'blue', missing=dict)\nassign(target, 'user.settings.theme.font', 'mono', missing=dict)\nsettings = target['user']['settings']\n\nprint(target)\nprint(settings)\nprint(sorted(settings['theme'].items()))\n",
+      "expected_output": [
+        "{'user': {'profile': {'name': 'Ada'}, 'settings': {'theme': {'color': 'blue', 'font': 'mono'}}}}",
+        "{'theme': {'color': 'blue', 'font': 'mono'}}",
+        "[('color', 'blue'), ('font', 'mono')]"
+      ]
+    }
+  ]
+}

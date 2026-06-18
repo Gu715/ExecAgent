@@ -1,0 +1,13 @@
+{
+  "task": "001_scikit-learn_task1",
+  "cases": [
+    {
+      "entry": "from sklearn.cross_decomposition import PLSRegression\n\nmodel = PLSRegression(n_components=2, scale=False, max_iter=7)\nprint(model.n_components)\nprint(model.scale)\nprint(model.max_iter)\n",
+      "expected_output": [
+        "2",
+        "False",
+        "7"
+      ]
+    }
+  ]
+}

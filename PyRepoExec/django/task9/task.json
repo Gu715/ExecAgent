@@ -1,0 +1,21 @@
+{
+  "task": "009_django_task9",
+  "cases": [
+    {
+      "entry": "from django.urls.converters import get_converter\n\nconv = get_converter(\"int\")\nprint(conv.regex)\nprint(conv.to_python(\"42\"))\nprint(conv.to_url(7))\n",
+      "expected_output": [
+        "[0-9]+",
+        "42",
+        "7"
+      ]
+    },
+    {
+      "entry": "from django.urls.converters import get_converter\n\nconv = get_converter(\"slug\")\nprint(conv.regex)\nprint(conv.to_python(\"hello-world\"))\nprint(conv.to_url(\"again\"))\n",
+      "expected_output": [
+        "[-a-zA-Z0-9_]+",
+        "hello-world",
+        "again"
+      ]
+    }
+  ]
+}

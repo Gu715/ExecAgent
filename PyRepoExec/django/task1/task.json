@@ -1,0 +1,14 @@
+{
+  "task": "001_django_task1",
+  "cases": [
+    {
+      "entry": "secret = \"A\" * 32\nmasked_token = \"B\" * 32 + \"1\" * 32\nwrong_token = \"B\" * 32 + \"2\" * 32\n\nprint(_check_token_format(masked_token))\nprint(_unmask_cipher_token(masked_token))\nprint(_does_token_match(masked_token, secret))\nprint(_does_token_match(wrong_token, secret))\n",
+      "expected_output": [
+        "None",
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

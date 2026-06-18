@@ -1,0 +1,13 @@
+{
+  "task": "v4_django_media_merge_topological_order",
+  "cases": [
+    {
+      "entry": "left = Media(css={'screen': ['a.css', 'shared.css']}, js=['one.js'])\nright = Media(css={'screen': ['shared.css', 'b.css'], 'print': ['p.css']}, js=['one.js', 'two.js'])\nresult = left + right\n\nprint(sorted((medium, files) for medium, files in result._css.items()))\nprint(result._js)\nprint(result['css']._css_lists)\n",
+      "expected_output": [
+        "[('print', ['p.css']), ('screen', ['a.css', 'shared.css', 'b.css'])]",
+        "['one.js', 'two.js']",
+        "[{'screen': ['a.css', 'shared.css', 'b.css'], 'print': ['p.css']}]"
+      ]
+    }
+  ]
+}

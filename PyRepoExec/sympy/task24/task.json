@@ -1,0 +1,11 @@
+{
+  "task": "024_sympy_task24",
+  "cases": [
+    {
+      "entry": "from sympy import symbols\nfrom sympy.simplify.powsimp import powdenest\n\nx = symbols(\"x\")\nprint(powdenest(x))\n",
+      "expected_output": [
+        "x"
+      ]
+    }
+  ]
+}

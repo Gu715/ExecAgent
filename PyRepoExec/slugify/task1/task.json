@@ -1,0 +1,11 @@
+{
+  "task": "v2_slugify_stateful_mixed_options",
+  "cases": [
+    {
+      "entry": "from slugify.slugify import smart_truncate\n\nprint(smart_truncate(\"  alpha  \"))\n",
+      "expected_output": [
+        "alpha"
+      ]
+    }
+  ]
+}

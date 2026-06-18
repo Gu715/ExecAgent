@@ -1,0 +1,14 @@
+{
+  "task": "v4_pint_unitscontainer_add_remove_rename",
+  "cases": [
+    {
+      "entry": "u = UnitsContainer({\"meter\": 1, \"second\": -2})\nv = u.add(\"second\", 2).add(\"candela\", 1).rename(\"candela\", \"cd\")\nw = v.remove([\"meter\"])\n\nprint(u)\nprint(v)\nprint(w)\nprint(list(v.items()))\n",
+      "expected_output": [
+        "meter / second ** 2",
+        "cd * meter",
+        "cd",
+        "[('meter', 1), ('cd', 1)]"
+      ]
+    }
+  ]
+}

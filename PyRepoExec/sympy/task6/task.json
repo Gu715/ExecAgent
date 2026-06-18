@@ -1,0 +1,11 @@
+{
+  "task": "006_sympy_task6",
+  "cases": [
+    {
+      "entry": "from sympy.simplify.trigsimp import trigsimp\n\nprint(trigsimp(1))\n",
+      "expected_output": [
+        "1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_7",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nhtml = (\n    '<b>Yay</b> <a href=\"http://github.com\">GitHub</a>'\n    '<ol start=\"3\"><li>a</li><li>b</li></ol>'\n)\ntext = markdownify(html, convert=[\"b\"]).strip()\nlines = [line for line in text.splitlines() if line.strip()]\n\nprint(lines)\nprint(lines[0].startswith(\"**\"))\nprint(lines[-2:])\n",
+      "expected_output": [
+        "['**Yay** GitHubab']",
+        "True",
+        "['**Yay** GitHubab']"
+      ]
+    }
+  ]
+}

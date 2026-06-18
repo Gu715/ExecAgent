@@ -1,0 +1,11 @@
+{
+  "task": "005_django_task5",
+  "cases": [
+    {
+      "entry": "lib = Library()\ndecorator = lib.simple_tag(name='welcome')\nreturned = decorator(greet)\nprint((returned.__name__, sorted(lib.tags), lib.tags['welcome'].__name__))\n",
+      "expected_output": [
+        "('greet', ['welcome'], 'greet')"
+      ]
+    }
+  ]
+}

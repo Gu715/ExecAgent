@@ -1,0 +1,4 @@
+httpie/cli/dicts.py
+httpie/config.py
+httpie/cookies.py
+httpie/sessions.py

@@ -1,0 +1,14 @@
+{
+  "task": "002_astropy_task2",
+  "cases": [
+    {
+      "entry": "import numpy as np\n\nmodel = PointMeasures(p0=0.1, gamma=0.5, ncp_prior=2.0)\nvalues = model.fitness(np.array([1.0, 4.0]), np.array([2.0, 4.0]))\nprint(model.p0)\nprint(model.gamma)\nprint(model.ncp_prior)\nprint(values.tolist())\n",
+      "expected_output": [
+        "0.1",
+        "0.5",
+        "2.0",
+        "[1.0, 1.0]"
+      ]
+    }
+  ]
+}

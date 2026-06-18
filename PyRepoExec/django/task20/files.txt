@@ -1,0 +1,3 @@
+django/db/migrations/migration.py
+django/db/migrations/writer.py
+django/db/migrations/serializer.py

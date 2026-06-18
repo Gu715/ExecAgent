@@ -1,0 +1,12 @@
+{
+  "task": "v4_markdownify_inline_image_parent_context",
+  "cases": [
+    {
+      "entry": "from markdownify import MarkdownConverter\n\nclass Element:\n    attrs = {'alt': 'Alt', 'src': '/i.png', 'title': 'T'}\n    parent = type('Parent', (), {'name': 'h3'})()\n\nplain = MarkdownConverter().convert_img(Element(), '', {'_inline'})\nkept = MarkdownConverter(keep_inline_images_in=['h3']).convert_img(Element(), '', {'_inline'})\n\nprint([plain, kept])\nprint((plain, kept.startswith('!['), 'T' in kept))\n",
+      "expected_output": [
+        "['Alt', '![Alt](/i.png \"T\")']",
+        "('Alt', True, True)"
+      ]
+    }
+  ]
+}

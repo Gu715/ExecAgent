@@ -1,0 +1,14 @@
+{
+  "task": "v4_django_admindocs_docstring_and_named_groups",
+  "cases": [
+    {
+      "entry": "doc = \"\"\"\n    Summary line\n\n    Body one\n      Body two\n\n    Author: Ada\n    Version: 1\n\"\"\"\ntitle, body, metadata = parse_docstring(doc)\npattern = replace_named_groups(\n    r'^(?P<outer>blog/(?P<year>\\d{4})/(?P<slug>[-\\w]+))/edit/$'\n)\n\nprint(title)\nprint(body.splitlines())\nprint(sorted(metadata.items()))\nprint(pattern)\n",
+      "expected_output": [
+        "Summary line",
+        "['Body one', '  Body two']",
+        "[('Author', 'Ada'), ('Version', '1')]",
+        "^<outer>/edit/$"
+      ]
+    }
+  ]
+}

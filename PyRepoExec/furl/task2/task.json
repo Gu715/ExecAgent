@@ -1,0 +1,12 @@
+{
+  "task": "v3_furl_complex_2",
+  "cases": [
+    {
+      "entry": "from furl.common import is_iterable_but_not_string\n\nprint(is_iterable_but_not_string((\"a\", \"b\")))\nprint(is_iterable_but_not_string(None))\n",
+      "expected_output": [
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

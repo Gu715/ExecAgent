@@ -1,0 +1,74 @@
+YOU ARE A PYTHON PROGRAM ANALYST.
+Your job is to simulate execution using the given source code and CFG, and derive the final answer for the given concrete input.
+Write your reasoning as a compact block-by-block execution trace, then give the final result after [Result].
+
+[Code]
+```python
+def lineAfterContext(line, prefix):
+    if line.startswith(prefix):
+        line = line[len(prefix):]
+
+    toks = line.split(' in ', 1)
+    if len(toks) == 2:
+        rest = toks[1].split(' ')
+        line = ' '.join(rest[1:])
+
+    return line
+```
+
+[CFG]
+```
+### CFG: lineAfterContext
+B1: if line.startswith(prefix):
+  ->B2 case line.startswith(prefix)
+  ->B3 case (not line.startswith(prefix))
+
+B2: line = line[len(prefix):]
+  ->B3
+
+B3: toks = line.split(' in ', 1)
+  ->B4
+
+B4: if len(toks) == 2:
+  ->B5 case (len(toks) == 2)
+  ->B6 case (len(toks) != 2)
+
+B5: rest = toks[1].split(' ')
+  line = ' '.join(rest[1:])
+  ->B6
+
+B6: return line
+```
+
+[Input]
+```
+'ic| eins: zwei', 'ic| '
+```
+
+[Output requirements]
+Return exactly two top-level sections in this order:
+[TRACE]
+<Your simulated execution trace>
+[/TRACE]
+
+[RESULT]<the exact final result>[/RESULT]
+
+Your trace should be a compact semi-formal execution trace in natural language.
+Write it as a sequence of local execution blocks.
+For each trace block, include as much of the following as is relevant:
+- the current block
+- the statement, operation, or event being executed
+- the relevant state after this part of execution
+- the next block or control-flow destination
+Prefer one paragraph per trace block.
+A trace block may contain multiple short sentences, but it should stay unified rather than split into separate mini-sections.
+Keep each trace block local, concrete, and easy to follow.
+
+Example style for trace:
+At b1, `i = 0` and `acc = 0` are established, after which control reaches the loop header at `b2`.
+At b2, the condition `i < 2` is true under the current state, so execution takes the loop body at `b3`.
+At b3, `acc += i` runs and keeps `acc = 0`; the update block `b4` then advances `i` to `1` and sends control back to `b2`.
+At b2, the condition still holds, so the body runs once more: `b3` updates `acc` to `1`, `b4` advances `i` to `2`, and control returns to `b2`.
+At b2, the condition is now false, so execution exits the loop to `b5`, which returns `acc = 1`.
+
+Result must be the exact Python value representation of the final result.

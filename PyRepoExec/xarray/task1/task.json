@@ -1,0 +1,13 @@
+{
+  "task": "001_xarray_task1",
+  "cases": [
+    {
+      "entry": "print(_netcdf_to_numpy_timeunit(\"hours\"))\nprint(_numpy_to_netcdf_timeunit(\"ms\"))\nprint(_ensure_padded_year(\"12-01-01\"))\n",
+      "expected_output": [
+        "h",
+        "milliseconds",
+        "0012-01-01"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task": "001_sympy_task1",
+  "cases": [
+    {
+      "entry": "from sympy import symbols\nfrom sympy.simplify.fu import TR0\n\nx = symbols(\"x\")\nprint(TR0(x + x))\n",
+      "expected_output": [
+        "2*x"
+      ]
+    }
+  ]
+}

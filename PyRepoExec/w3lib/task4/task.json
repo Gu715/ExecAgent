@@ -1,0 +1,12 @@
+{
+  "task": "v3_w3lib_complex_4",
+  "cases": [
+    {
+      "entry": "from w3lib.html import has_entities\n\nprint(has_entities(\"Tom &amp; Jerry\"))\nprint(has_entities(\"plain\"))\n",
+      "expected_output": [
+        "True",
+        "False"
+      ]
+    }
+  ]
+}

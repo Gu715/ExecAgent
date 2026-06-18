@@ -1,0 +1,13 @@
+{
+  "task": "v4_markdownify_pre_strip_modes",
+  "cases": [
+    {
+      "entry": "from markdownify import MarkdownConverter, STRIP_ONE\n\ndefault = MarkdownConverter().convert_pre(\n    None, '\\n\\n  alpha\\n  beta\\n\\n', set()\n).replace('\\n', '|')\none = MarkdownConverter(strip_pre=STRIP_ONE, code_language='py').convert_pre(\n    None, '\\n  alpha\\n', set()\n).replace('\\n', '|')\n\nprint([default, one])\nprint(default)\nprint(one.count('|'))\n",
+      "expected_output": [
+        "['||```|  alpha|  beta|```||', '||```py|  alpha|```||']",
+        "||```|  alpha|  beta|```||",
+        "6"
+      ]
+    }
+  ]
+}

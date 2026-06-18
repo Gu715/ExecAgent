@@ -1,0 +1,13 @@
+{
+  "task": "003_xarray_task3",
+  "cases": [
+    {
+      "entry": "print(_is_standard_calendar(\"gregorian\"))\nprint(_netcdf_to_numpy_timeunit(\"day\"))\nprint(_numpy_to_netcdf_timeunit(\"D\"))\n",
+      "expected_output": [
+        "True",
+        "D",
+        "days"
+      ]
+    }
+  ]
+}

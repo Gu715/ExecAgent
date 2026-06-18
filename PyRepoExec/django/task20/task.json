@@ -1,0 +1,11 @@
+{
+  "task": "020_django_task20",
+  "cases": [
+    {
+      "entry": "migration = Migration('auto_demo', 'books')\nmigration.operations = []\nmigration.dependencies = [('__setting__', 'AUTH_USER_MODEL'), ('books', '0001_initial')]\nmigration.replaces = [('books', '0001_initial'), ('books', '0002_auto')]\nmigration.initial = True\n\nwriter = MigrationWriter(migration, include_header=False)\nprint(writer.as_string())\n",
+      "expected_output": [
+        "from django.conf import settings\nfrom django.db import migrations\n\n\nclass Migration(migrations.Migration):\n\n    replaces = [('books', '0001_initial'), ('books', '0002_auto')]\n\n    initial = True\n\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('books', '0001_initial'),\n    ]\n\n    operations = [\n    ]"
+      ]
+    }
+  ]
+}

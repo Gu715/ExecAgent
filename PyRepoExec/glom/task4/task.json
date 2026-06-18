@@ -1,0 +1,13 @@
+{
+  "task": "v3_glom_complex_4",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\n\ntarget = {\n    'user': {'profile': {'name': 'Ada', 'city': 'Paris'}, 'scores': [2, 5, 7]},\n    'meta': {'active': True, 'count': 3},\n    'archive': {'user': {'profile': {'name': 'Old'}, 'scores': [100]}}\n}\nspec = {'name': 'user.profile.name', 'city': 'user.profile.city', 'scores': ('user.scores', [lambda x: x + 1])}\nresult = glom(target, spec)\nresult['total'] = sum(result['scores'])\n\nprint(result)\nprint(result['scores'][1:])\nprint(result['name'] + '@' + result['city'])\n",
+      "expected_output": [
+        "{'name': 'Ada', 'city': 'Paris', 'scores': [3, 6, 8], 'total': 17}",
+        "[6, 8]",
+        "Ada@Paris"
+      ]
+    }
+  ]
+}

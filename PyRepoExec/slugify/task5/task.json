@@ -1,0 +1,11 @@
+{
+  "task": "v3_slugify_complex_5",
+  "cases": [
+    {
+      "entry": "from slugify.slugify import smart_truncate\n\nprint(smart_truncate(\"alpha beta gamma\", max_length=14, word_boundary=True))\n",
+      "expected_output": [
+        "alpha beta"
+      ]
+    }
+  ]
+}

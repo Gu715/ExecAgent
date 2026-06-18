@@ -1,0 +1,11 @@
+{
+  "task": "009_sympy_task9",
+  "cases": [
+    {
+      "entry": "from sympy import Interval\n\nprint(Interval(0, 2).contains(1))\n",
+      "expected_output": [
+        "True"
+      ]
+    }
+  ]
+}

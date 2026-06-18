@@ -1,0 +1,11 @@
+{
+  "task": "v3_w3lib_complex_5",
+  "cases": [
+    {
+      "entry": "from w3lib.html import strip_html5_whitespace\n\nprint(strip_html5_whitespace(\" \t hello \n\"))\n",
+      "expected_output": [
+        "hello"
+      ]
+    }
+  ]
+}

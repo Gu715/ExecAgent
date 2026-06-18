@@ -1,0 +1,22 @@
+{
+  "task": "v2_markdownify_mixed_blocks",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nhtmls = [\n    '<b>Yay</b> <a href=\"http://github.com\">GitHub</a>',\n    '<a href=\"https://google.com\">https://google.com</a>',\n    '<h3>A <img src=\"/path/to/img.jpg\" alt=\"Alt Text\" title=\"Optional title\"/> B</h3>',\n]\nlines = []\nfor index, html in enumerate(htmls):\n    if index == 0:\n        text = markdownify(html, convert=[\"b\"]).strip()\n    elif index == 1:\n        text = markdownify(html, default_title=True).strip()\n    else:\n        text = markdownify(html).strip()\n    lines.append(text)\n\nprint(lines)\nprint(lines[0].split())\nprint(lines[2].count(\"!\"))\n",
+      "expected_output": [
+        "['**Yay** GitHub', '[https://google.com](https://google.com \"https://google.com\")', '### A ![Alt Text](/path/to/img.jpg \"Optional title\") B']",
+        "['**Yay**', 'GitHub']",
+        "1"
+      ]
+    },
+    {
+      "entry": "from markdownify import markdownify\n\nnested_html = (\n    '<ul><li>1<ul><li>a<ul><li>I</li><li>II</li><li>III</li></ul></li>'\n    '<li>b</li><li>c</li></ul></li><li>2</li><li>3</li></ul>'\n)\nordered_html = '<ol start=\"3\"><li>a</li><li>b</li></ol>'\ntable_html = (\n    '<table><tbody>'\n    '<tr><td>Firstname</td><td>Lastname</td><td>Age</td></tr>'\n    '<tr><td>Jill</td><td>Smith</td><td>50</td></tr>'\n    '<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>'\n    '</tbody></table>'\n)\ncode_html = '<pre>test |  foo | bar</pre>'\n\nnested = markdownify(nested_html).strip().splitlines()\nordered = markdownify(ordered_html).strip().splitlines()\ntable = markdownify(table_html).strip().splitlines()\ncode = markdownify(code_html, code_language=\"python\").strip().splitlines()\nsummary = {\n    \"nested\": len(nested),\n    \"ordered_last\": ordered[-1],\n    \"table_cols\": table[0].count(\"|\") - 1,\n    \"code_fence\": code[0] + \"/\" + code[-1],\n}\n\nprint(nested[:3])\nprint(ordered)\nprint(summary)\nprint(table[2:])\n",
+      "expected_output": [
+        "['* 1', '  + a', '    - I']",
+        "['3. a', '4. b']",
+        "{'nested': 9, 'ordered_last': '4. b', 'table_cols': 3, 'code_fence': '```python/```'}",
+        "['| Jill | Smith | 50 |', '| Eve | Jackson | 94 |']"
+      ]
+    }
+  ]
+}

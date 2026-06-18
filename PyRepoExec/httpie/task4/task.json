@@ -1,0 +1,11 @@
+{
+  "task": "004_httpie_task4",
+  "cases": [
+    {
+      "entry": "processor = convert_json_value_to_form_if_needed(\n    in_json_mode=False,\n    processor=process_data_raw_json_embed_arg,\n)\nresult = processor(KeyValueArg('payload', '\"ok\"', ':=', 'payload:=\"ok\"'))\nprint(repr(result))\n",
+      "expected_output": [
+        "'ok'"
+      ]
+    }
+  ]
+}

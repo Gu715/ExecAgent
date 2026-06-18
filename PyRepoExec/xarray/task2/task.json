@@ -1,0 +1,11 @@
+{
+  "task": "002_xarray_task2",
+  "cases": [
+    {
+      "entry": "result = _mapping_repr(\n    {\"foo\": \"bar\"},\n    title=\"Attributes\",\n    summarizer=summarize_attr,\n    expand_option_name=\"display_expand_attrs\",\n)\nprint(result)\n",
+      "expected_output": [
+        "Attributes:\n    foo:      bar"
+      ]
+    }
+  ]
+}

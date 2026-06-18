@@ -1,0 +1,13 @@
+{
+  "task": "v4_glom_nested_list_tuple_lambda",
+  "cases": [
+    {
+      "entry": "from glom.core import glom\n\ntarget = {\n    'users': [\n        {'name': 'Ada', 'scores': [3, 5]},\n        {'name': 'Bob', 'scores': [2, 9]},\n        {'name': 'Cy', 'scores': []},\n    ]\n}\nspec = {\n    'names': ('users', ['name']),\n    'first_scores': ('users', [('scores', lambda scores: scores[0] if scores else None)]),\n}\nresult = glom(target, spec)\nresult['paired'] = list(zip(result['names'], result['first_scores']))\n\nprint(result)\nprint([score for score in result['first_scores'] if score is not None])\nprint(result['paired'][-1])\n",
+      "expected_output": [
+        "{'names': ['Ada', 'Bob', 'Cy'], 'first_scores': [3, 2, None], 'paired': [('Ada', 3), ('Bob', 2), ('Cy', None)]}",
+        "[3, 2]",
+        "('Cy', None)"
+      ]
+    }
+  ]
+}

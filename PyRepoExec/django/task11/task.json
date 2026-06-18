@@ -1,0 +1,11 @@
+{
+  "task": "011_django_task11",
+  "cases": [
+    {
+      "entry": "result = replace_unnamed_groups(r'^files/(\\d{4})/(v\\d+)/(report\\.[a-z]{2,4})/$')\nprint(result)\n",
+      "expected_output": [
+        "^files/<var>/^files/(\\d{4})/<var>/^files/(\\d{4})/(v\\d+)/<var>/$"
+      ]
+    }
+  ]
+}

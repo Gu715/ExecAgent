@@ -1,0 +1,19 @@
+{
+  "task": "v3_w3lib_complex_2",
+  "cases": [
+    {
+      "entry": "from w3lib.html import remove_tags, replace_escape_chars\n\nprint(remove_tags(\"<span>Hi</span>\"))\nprint(replace_escape_chars(\"x\\ny\", replace_by=\"-\"))\n",
+      "expected_output": [
+        "Hi",
+        "x-y"
+      ]
+    },
+    {
+      "entry": "from w3lib.html import remove_comments, strip_html5_whitespace\n\nprint(remove_comments(\"a<!--x-->b\"))\nprint(strip_html5_whitespace(\"\n  ok \t\"))\n",
+      "expected_output": [
+        "ab",
+        "ok"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task": "015_django_task15",
+  "cases": [
+    {
+      "entry": "cache = LocMemCache('test', {'KEY_PREFIX': 'site', 'VERSION': 2})\ncache.set('a', {'x': [1, 2]})\ncache.set('empty', '')\ncache.set('zero', 0)\nresult = cache.get_many(['zero', 'missing', 'a', 'empty'])\nprint(result)\n",
+      "expected_output": [
+        "{'zero': 0, 'a': {'x': [1, 2]}, 'empty': ''}"
+      ]
+    }
+  ]
+}

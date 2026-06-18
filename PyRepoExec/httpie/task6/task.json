@@ -1,0 +1,11 @@
+{
+  "task": "006_httpie_task6",
+  "cases": [
+    {
+      "entry": "session = Session(path='/tmp/dummy.json', env=None, bound_host='example.com', session_id='sess')\nfor k, v in [('X-Old', '1'), ('Hello', 'OldValue')]:\n    session._headers.add(k, v)\n\nrequest_headers = HTTPHeadersDict()\nfor k, v in [\n    ('Hello', 'World'),\n    ('Cookie', 'a=1'),\n    ('Content-Type', 'text/plain'),\n    ('If-None-Match', 'xyz'),\n]:\n    request_headers.add(k, v)\n\nsession.update_headers(request_headers)\n\nresult = {\n    'headers': dict(session.headers.items()),\n    'cookies': {c.name: {'value': c.value, 'path': c.path} for c in session.cookie_jar},\n}\nprint(result)\n",
+      "expected_output": [
+        "{'headers': {'Hello': 'World', 'X-Old': '1'}, 'cookies': {'a': {'value': '1', 'path': '/'}}}"
+      ]
+    }
+  ]
+}

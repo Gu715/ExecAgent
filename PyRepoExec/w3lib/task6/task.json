@@ -1,0 +1,11 @@
+{
+  "task": "v3_w3lib_complex_6",
+  "cases": [
+    {
+      "entry": "from w3lib.html import remove_comments\n\nprint(remove_comments(\"a<!-- hidden -->b\"))\n",
+      "expected_output": [
+        "ab"
+      ]
+    }
+  ]
+}

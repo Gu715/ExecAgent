@@ -1,0 +1,11 @@
+{
+  "task": "001_httpie_task1",
+  "cases": [
+    {
+      "entry": "small_parser = ParserSpec('simple_parser')\n\ng = small_parser.add_group('main')\ng.add_argument('name', help='user name')\ng.add_argument('--count', type=int)\n\nresult = small_parser.finalize().serialize()\nprint(result)\n",
+      "expected_output": [
+        "{'name': 'simple_parser', 'description': None, 'groups': [{'name': 'main', 'description': None, 'is_mutually_exclusive': False, 'args': [{'options': ['name'], 'short_description': None, 'description': 'user name'}, {'options': ['--count'], 'python_type_name': 'int'}]}]}"
+      ]
+    }
+  ]
+}

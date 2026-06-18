@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_3",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nhtml = '<h3>A <img src=\"/path/to/img.jpg\" alt=\"Alt Text\" title=\"Optional title\"/> B</h3>'\ntext = markdownify(html).strip()\nparts = text.split()\nstate = {\"head\": parts[0], \"image\": parts[2], \"tail\": parts[-1]}\n\nprint(text)\nprint(state)\nprint(text.count(\"Alt\"))\n",
+      "expected_output": [
+        "### A Alt Text B",
+        "{'head': '###', 'image': 'Alt', 'tail': 'B'}",
+        "1"
+      ]
+    }
+  ]
+}

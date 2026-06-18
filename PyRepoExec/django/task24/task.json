@@ -1,0 +1,14 @@
+{
+  "task": "v4_django_format_cache_locale_fallback",
+  "cases": [
+    {
+      "entry": "reset_format_cache()\ndate_format = get_format('DATE_FORMAT', lang='en', use_l10n=True)\ndate_inputs = get_format('DATE_INPUT_FORMATS', lang='en', use_l10n=True)\nunknown = get_format('NOT_A_FORMAT', lang='en', use_l10n=True)\n\nprint(date_format)\nprint(date_inputs)\nprint(unknown)\nprint(sorted(_format_cache.items()))\n",
+      "expected_output": [
+        "N j, Y",
+        "['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y']",
+        "NOT_A_FORMAT",
+        "[(('DATE_FORMAT', 'en'), 'N j, Y'), (('DATE_INPUT_FORMATS', 'en'), ['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y'])]"
+      ]
+    }
+  ]
+}

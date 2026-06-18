@@ -1,0 +1,11 @@
+{
+  "task": "012_django_task12",
+  "cases": [
+    {
+      "entry": "result = format(\n    1.23456789e17,\n    decimal_sep='.',\n    decimal_pos=2,\n    grouping=[3, 2, 0],\n    thousand_sep=',',\n    force_grouping=True,\n    use_l10n=False,\n)\nprint(result)\n",
+      "expected_output": [
+        "1,23,45,67,89,00,00,00,000.00"
+      ]
+    }
+  ]
+}

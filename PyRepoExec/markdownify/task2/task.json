@@ -1,0 +1,13 @@
+{
+  "task": "v3_markdownify_complex_2",
+  "cases": [
+    {
+      "entry": "from markdownify import markdownify\n\nhtmls = [\n    '<b>Yay</b> <a href=\"http://github.com\">GitHub</a>',\n    '<a href=\"https://google.com\">https://google.com</a>',\n]\nconverted = []\nfor html in htmls:\n    converted.append(markdownify(html, convert=[\"b\"], default_title=True).strip())\n\nprint(converted)\nprint([text.count(\"[\") for text in converted])\nprint(\" || \".join(converted))\n",
+      "expected_output": [
+        "['**Yay** GitHub', 'https://google.com']",
+        "[0, 0]",
+        "**Yay** GitHub || https://google.com"
+      ]
+    }
+  ]
+}

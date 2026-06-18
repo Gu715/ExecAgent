@@ -1,0 +1,13 @@
+{
+  "task": "v4_glom_coalesce_skip_assign_deep",
+  "cases": [
+    {
+      "entry": "from glom.core import Coalesce, glom\nfrom glom.mutation import assign\n\ntarget = {\n    'profile': {'name': 'Ada', 'nickname': '', 'handles': {'github': 'ada-l'}},\n    'settings': {},\n}\nprimary = glom(target, Coalesce('profile.alias', 'profile.nickname', 'profile.handles.github', skip=''))\nassign(target, 'settings.primary', primary, missing=dict)\nassign(target, 'settings.length', len(primary), missing=dict)\n\nprint(primary)\nprint(target['settings'])\nprint(target)\n",
+      "expected_output": [
+        "ada-l",
+        "{'primary': 'ada-l', 'length': 5}",
+        "{'profile': {'name': 'Ada', 'nickname': '', 'handles': {'github': 'ada-l'}}, 'settings': {'primary': 'ada-l', 'length': 5}}"
+      ]
+    }
+  ]
+}
